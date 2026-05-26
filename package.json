@@ -1,0 +1,11 @@
+{
+  "name": "audiolift",
+  "version": "1.0.0",
+  "description": "Browser-based music removal and speech enhancement tool",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["audio", "music-removal", "speech-enhancement", "ffmpeg-wasm"],
+  "license": "MIT"
+}

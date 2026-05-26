@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioLift — Remove Music & Enhance Speech</title>
+  <meta name="description" content="AI-powered browser tool to remove background music from video/audio and enhance speech clarity — all processed locally on your device." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M4 14 Q8 6 14 6 Q20 6 24 14 Q20 22 14 22 Q8 22 4 14Z" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+            <circle cx="14" cy="14" r="3" fill="url(#logoGrad)"/>
+            <path d="M9 14 L11 10 L13 16 L15 8 L17 18 L19 14" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Audio<span class="logo-accent">Lift</span></span>
+      </div>
+      <nav class="nav-pills">
+        <a href="#features" class="nav-pill">Features</a>
+        <a href="#processor" class="nav-pill">Start Processing</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      100% Local Processing — No Uploads
+    </div>
+    <h1 class="hero-title">
+      Remove Music,<br/>
+      <span class="gradient-text">Amplify Voices</span>
+    </h1>
+    <p class="hero-subtitle">
+      Extract crystal-clear speech from any video or audio file. Powered by FFmpeg.wasm running entirely in your browser — your files never leave your device.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">0%</span>
+        <span class="stat-label">Server uploads</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value">MP4/MP3/WAV</span>
+        <span class="stat-label">Supported formats</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value">2-in-1</span>
+        <span class="stat-label">Remove music + enhance speech</span>
+      </div>
+    </div>
+    <a href="#processor" class="cta-btn">
+      <span>Start Processing</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-label">What You Can Do</div>
+    <h2 class="section-title">Powerful Audio Processing</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 19V6l12-3v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 19V6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Music Removal</h3>
+        <p>Remove background music and instrumental tracks while preserving the spoken voice using advanced spectral filtering and FFT denoising.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Speech Enhancement</h3>
+        <p>Boost vocal clarity with dynamic range compression, voice-frequency EQ boosting, and noise gating for professional-grade speech output.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 8l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Video Support</h3>
+        <p>Upload a video file and get back the same video with processed audio — music removed and speech enhanced, keeping all your visuals intact.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>100% Private</h3>
+        <p>All processing happens in your browser via WebAssembly. Your files are never uploaded to any server. Complete data privacy guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Processor Section -->
+  <section class="processor-section" id="processor">
+    <div class="section-label">Audio Processor</div>
+    <h2 class="section-title">Process Your File</h2>
+
+    <!-- Step Indicator -->
+    <div class="steps">
+      <div class="step active" id="step1">
+        <div class="step-num">1</div>
+        <span>Upload</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step2">
+        <div class="step-num">2</div>
+        <span>Process</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step3">
+        <div class="step-num">3</div>
+        <span>Download</span>
+      </div>
+    </div>
+
+    <div class="processor-card">
+
+      <!-- Tab Switcher -->
+      <div class="input-tabs" id="inputTabs">
+        <button class="input-tab active" data-tab="file" id="tabFile">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 2h8l4 4v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Upload File
+        </button>
+        <button class="input-tab" data-tab="url" id="tabUrl">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M10.5 4.5l3 3-6 6-3-3 6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.5 10.5L4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 3l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Paste URL
+          <span class="tab-badge">yt-dlp</span>
+        </button>
+      </div>
+      <!-- Upload Zone -->
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept="video/*,audio/*,.mp4,.webm,.mkv,.avi,.mov,.mp3,.wav,.ogg,.flac,.m4a" hidden />
+        <div class="upload-icon-wrap">
+          <div class="upload-icon-ring ring1"></div>
+          <div class="upload-icon-ring ring2"></div>
+          <div class="upload-icon-core">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 4v16M8 12l8-8 8 8" stroke="url(#uploadGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 24v2a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-2" stroke="url(#uploadGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="uploadGrad" x1="4" y1="4" x2="28" y2="28">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <p class="upload-title">Drop your video or audio file here</p>
+        <p class="upload-sub">Supports MP4, MOV, AVI, WebM, MP3, WAV, OGG, FLAC, M4A</p>
+        <button class="upload-btn" id="uploadBtn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2v10M4 7l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Choose File
+        </button>
+      </div>
+
+      <!-- URL Input Zone -->
+      <div class="url-zone" id="urlZone" style="display:none">
+
+        <!-- Platform Badges -->
+        <div class="platform-logos">
+          <div class="platform-logo" data-platform="youtube" title="YouTube">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+            <span>YouTube</span>
+          </div>
+          <div class="platform-logo" data-platform="instagram" title="Instagram">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Instagram</span>
+          </div>
+          <div class="platform-logo" data-platform="facebook" title="Facebook">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span>Facebook</span>
+          </div>
+          <div class="platform-logo" data-platform="tiktok" title="TikTok">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+            </svg>
+            <span>TikTok</span>
+          </div>
+          <div class="platform-logo" data-platform="twitter" title="X / Twitter">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>X / Twitter</span>
+          </div>
+        </div>
+
+        <!-- URL Input -->
+        <div class="url-input-wrap">
+          <div class="url-input-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10.5 4.5l3 3-6 6-3-3 6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.5 10.5L4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <input
+            type="url"
+            id="urlInput"
+            class="url-input"
+            placeholder="Paste YouTube, Instagram, Facebook, TikTok or X URL..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="url-clear-btn" id="urlClearBtn" style="display:none" title="Clear">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Detected platform indicator -->
+        <div class="url-detect" id="urlDetect" style="display:none">
+          <span id="urlDetectIcon"></span>
+          <span id="urlDetectText">Detected: YouTube</span>
+        </div>
+
+        <!-- Tool Status -->
+        <div class="tool-status" id="toolStatus">
+          <div class="tool-status-item" id="toolDemucs">
+            <div class="tool-dot"></div>
+            <span class="tool-name">demucs</span>
+            <span class="tool-version" id="demucsVersion">checking...</span>
+          </div>
+          <div class="tool-status-item" id="toolYtdlp">
+            <div class="tool-dot"></div>
+            <span class="tool-name">yt-dlp</span>
+            <span class="tool-version" id="ytdlpVersion">checking...</span>
+          </div>
+          <div class="tool-status-item" id="toolAria2c">
+            <div class="tool-dot"></div>
+            <span class="tool-name">aria2c</span>
+            <span class="tool-version" id="aria2cVersion">checking...</span>
+          </div>
+          <div class="tool-status-item" id="toolFfmpeg">
+            <div class="tool-dot"></div>
+            <span class="tool-name">ffmpeg</span>
+            <span class="tool-version" id="ffmpegVersion">checking...</span>
+          </div>
+        </div>
+
+        <!-- Install instructions (shown if yt-dlp missing) -->
+        <div class="install-warn" id="installWarn" style="display:none">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2L1 16h16L9 2z" stroke="#fb923c" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 7v4M9 13v1" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>yt-dlp not found.</strong> Install it to enable URL downloading:<br/>
+            <code>pip install yt-dlp</code> &nbsp;or&nbsp; <code>winget install yt-dlp</code><br/>
+            <a href="https://github.com/yt-dlp/yt-dlp/releases" target="_blank" rel="noopener">Download from GitHub ↗</a>
+          </div>
+        </div>
+
+        <!-- Confirm URL button -->
+        <button class="url-confirm-btn" id="urlConfirmBtn" disabled>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 3.5v7M5.5 7l3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 13.5h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Use This URL
+        </button>
+      </div>
+
+      <!-- URL File Info (shown after URL confirmed) -->
+      <div class="file-info url-file-info" id="urlFileInfo" style="display:none">
+        <div class="file-icon url-source-icon">
+          <span id="urlSourceEmoji">🔗</span>
+        </div>
+        <div class="file-details">
+          <span class="file-name" id="urlFileName">Loading...</span>
+          <span class="file-meta" id="urlFileMeta">URL source</span>
+        </div>
+        <button class="file-remove" id="removeUrl" title="Remove URL">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- File Info (hidden initially) -->
+      <div class="file-info" id="fileInfo" style="display:none">
+        <div class="file-icon">
+          <svg id="fileTypeIcon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="2" y="2" width="24" height="24" rx="4" fill="url(#fileGrad)"/>
+            <path d="M8 14l4 4 8-8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="fileGrad" x1="2" y1="2" x2="26" y2="26">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="file-details">
+          <span class="file-name" id="fileName">file.mp4</span>
+          <span class="file-meta" id="fileMeta">120 MB · Video</span>
+        </div>
+        <button class="file-remove" id="removeFile" title="Remove file">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Process Panel (shown after file/URL selected) -->
+      <div class="process-panel" id="processPanel" style="display:none">
+        <div class="process-info-box">
+          <div class="process-info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 19V6l12-3v13" stroke="url(#piGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6" cy="19" r="3" stroke="url(#piGrad)" stroke-width="2"/>
+              <circle cx="18" cy="16" r="3" stroke="url(#piGrad)" stroke-width="2"/>
+              <defs>
+                <linearGradient id="piGrad" x1="0" y1="0" x2="24" y2="24">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="process-info-text">
+            <strong>Maximum vocal extraction</strong>
+            <span>20-stage DSP · center extraction → dual high-pass → low-pass → dual FFT denoiser → 9 EQ notches (kick, snare, toms, hi-hats) → hard limiter → gate</span>
+          </div>
+        </div>
+        <button class="process-btn" id="processBtn">
+          <svg class="btn-icon" width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <polygon points="6,4 18,11 6,18" fill="currentColor"/>
+          </svg>
+          <span id="processBtnText">Extract Vocals</span>
+        </button>
+      </div>
+
+
+      <!-- Progress Section -->
+      <div class="progress-section" id="progressSection" style="display:none">
+        <div class="progress-header">
+          <div class="spinner"></div>
+          <div class="progress-info">
+            <span class="progress-title" id="progressTitle">Initializing FFmpeg...</span>
+            <span class="progress-sub" id="progressSub">This may take a moment on first run</span>
+          </div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+        </div>
+        <div class="progress-log" id="progressLog">
+          <div class="log-entry">⚡ Booting AudioLift engine...</div>
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div class="result-section" id="resultSection" style="display:none">
+        <div class="result-success">
+          <div class="success-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" stroke="url(#successGrad)" stroke-width="2.5"/>
+              <path d="M12 20l6 6 10-12" stroke="url(#successGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="successGrad" x1="2" y1="2" x2="38" y2="38">
+                  <stop offset="0%" stop-color="#34d399"/>
+                  <stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>Processing Complete!</h3>
+          <p id="resultDesc">Your file has been processed successfully.</p>
+        </div>
+
+        <!-- Audio Preview -->
+        <div class="audio-preview" id="audioPreview">
+          <span class="preview-label">Preview Output</span>
+          <audio id="audioPlayer" controls></audio>
+        </div>
+
+        <!-- Waveform -->
+        <canvas id="waveformCanvas" class="waveform-canvas"></canvas>
+
+        <!-- Download Button -->
+        <div class="result-actions">
+          <a id="downloadLink" class="download-btn" download>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3v12M5 11l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 19h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            Download Processed File
+          </a>
+          <button class="reset-btn" id="resetBtn">Process Another File</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">
+        <div class="logo-icon" style="width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+            <path d="M4 14 Q8 6 14 6 Q20 6 24 14 Q20 22 14 22 Q8 22 4 14Z" stroke="url(#logoGrad2)" stroke-width="2" fill="none"/>
+            <circle cx="14" cy="14" r="3" fill="url(#logoGrad2)"/>
+            <path d="M9 14 L11 10 L13 16 L15 8 L17 18 L19 14" stroke="url(#logoGrad2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGrad2" x1="0" y1="0" x2="28" y2="28">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Audio<span class="logo-accent">Lift</span></span>
+      </div>
+      <p class="footer-copy">All processing is done locally in your browser. No data is ever sent to a server.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
